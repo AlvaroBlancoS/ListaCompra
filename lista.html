@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Paso 1</title>
+    <script>
+function addLi(){
+
+    var phrase = document.getElementById('phrase').value;
+    var theUl = document.getElementById('list');
+    var createLi = document.createElement("LI");
+    var addText = document.createTextNode(phrase);
+    /* A partir de ahí entramos la accion */
+    createLi.appendChild(addText);
+    theUl.appendChild(createLi);
+          
+}
+
+    </script>
+</head>
+
+<body>
+        <input type="text" id="phrase"><input type="submit" id="boton" onclick="addLi()">
+
+        <ul id="list">
+           
+        </ul>
+
+
+</body>
+
+
+</html>
