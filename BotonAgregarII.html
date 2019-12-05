@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Prueba</title>
+    <script>
+function addLi(){
+    /* 1. Guardamos el valor del campo de texto*/
+    var sentence = document.querySelector('#sentence').value;
+    /* 2. Seleccionamos el elemento de lista (ul) */
+    var theUl = document.querySelector('#list');
+    /* Creamos un elemento para la lista (li) */
+    var createLi = document.createElement("LI");
+    /* Creamos un ELEMENTO TEXTO que almacena el valor guardado de la variable sentence*/
+    var addText = document.createTextNode(sentence);
+    /* Añadimos al elemento createLi el hijo addText*/
+    createLi.appendChild(addText);
+    /* Añadimos al elemento theUl el hijo createLi*/
+    theUl.appendChild(createLi);
+
+
+    /* PONEMOS EL VALOR DE CAMPO DE TEXTO VACIO */
+    document.querySelector('#sentence').value = ""; 
+
+    /*COMO DESACTIVAR EL BOTON*/
+    /* Hemos llamado el boton de añadir */
+    var buttonDisable = document.querySelector("#addButton");
+    /* Desactivamos el boton de añadir */
+    buttonDisable.disabled = true;
+
+
+}
+    /*FUNCION DE CÓMO DESACTIVAR EL BOTON */
+function checkInput() {
+    var buttonDisable = document.querySelector("#addButton");
+    var inputElement = document.querySelector('#sentence');
+    buttonDisable.disabled = inputElement.value === '';
+            }
+    </script>
+</head>
+<body>
+        <!-- Texto -->
+        <input type="text" id="sentence" oninput="checkInput()">
+        
+        <!-- Boton de añadir -->
+        <input type="submit" onclick="addLi()" disabled id="addButton">
+
+        <ul id="list">
+           
+        </ul>
+</body>
+</html>
