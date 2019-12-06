@@ -1,0 +1,62 @@
+  <!DOCTYPE html>
+<html>
+<head>
+        <title>Prueba</title>
+    <script>
+function addLi(){
+    /* 1. Guardamos el valor del campo de texto*/
+    var sentence = document.querySelector('#sentence').value;
+    /* 2. Seleccionamos el elemento de lista (ul) */
+    var theUl = document.querySelector('#list');
+    /* 3. Creamos un elemento para la lista (li) */
+    var createLi = document.createElement("LI");
+    /* 4. Creamos un ELEMENTO TEXTO que almacena el valor guardado de la variable sentence*/
+    var addText = document.createTextNode(sentence);
+    /* 5. Añadimos al elemento createLi el hijo addText*/
+    createLi.appendChild(addText);
+    /* 6. Añadimos al elemento theUl el hijo createLi*/
+    theUl.appendChild(createLi);
+    /* 7. ponemos el valor de campo de texto vacio  */
+    document.querySelector('#sentence').value = ""; 
+    /* 8. como desactivar el boton*/
+    /* 9. Hemos llamado el boton de añadir */
+    var buttonDisable = document.querySelector("#addButton");
+    /* 10. Desactivamos el boton de añadir */
+    buttonDisable.disabled = true;
+}
+    /*funcion de como desactivar el boton si el campo de texto est'a vacio*/
+function checkInput() {
+    var buttonDisable = document.querySelector("#addButton");
+    var inputElement = document.querySelector('#sentence');
+    buttonDisable.disabled = inputElement.value === '';
+            } 
+
+    /*FUNCION DE COMO CREAR UN BOTON BORRADO */
+function removeLi() {
+    /* 1. Seleccionamos dos elementos a la vez de ul (list) y li*/
+    var items = document.querySelectorAll('#list li');
+    /* 2. Creamos un bucle for que nos permita recorre las cadenas de texto*/
+    for (let i = 0; i < items.length; i++){
+    /* 3. dentro del elemento ul, va seleccionando una cadena de texto mientras recorre */    
+    let theUl = items[i];
+    /* 4. Se ira eliminando la cadena de texto */
+    theUl.remove();
+  }
+}
+    </script>
+</head>
+<body>
+        <!-- Texto -->
+        <input type="text" id="sentence" oninput="checkInput()">
+        
+        <!-- Boton de añadir -->
+        <input type="submit" onclick="addLi()" disabled id="addButton">
+
+        <!-- Botoncito de borrar -->
+        <input type="submit" value="Delete" onclick="removeLi()">
+
+        <ul id="list">
+           
+        </ul>
+</body>
+</html>
